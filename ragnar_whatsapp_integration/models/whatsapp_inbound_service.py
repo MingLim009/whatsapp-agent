@@ -13,6 +13,48 @@ class WhatsappInboundService(models.AbstractModel):
     _description = 'Procesamiento de mensajes entrantes WhatsApp'
 
     @api.model
+    def process_webhook(self, payload):
+        """Route Kommo webhook payloads: delivery status or inbound message."""
+        if self._handle_delivery_status(payload):
+            return 'delivery'
+        if self.enqueue_from_kommo(payload):
+            return 'inbound'
+        return False
+
+    @api.model
+    def _handle_delivery_status(self, payload):
+        """Update outbound message delivery state when Kommo reports status."""
+        status_code = payload.get('status_code')
+        msgid = payload.get('msgid') or payload.get('message_id')
+        message_wrapper = payload.get('message') or {}
+        inner = message_wrapper.get('message') or message_wrapper
+        if not status_code and inner:
+            status_code = inner.get('status_code') or inner.get('delivery_status')
+            msgid = msgid or inner.get('id')
+
+        if status_code is None or not msgid:
+            return False
+
+        state_map = {
+            1: 'delivered',
+            2: 'read',
+            -1: 'failed',
+        }
+        delivery_state = state_map.get(int(status_code))
+        if not delivery_state:
+            return False
+
+        Message = self.env['whatsapp.message']
+        message = Message.search([('kommo_message_id', '=', msgid)], limit=1)
+        if not message:
+            _logger.info('Webhook entrega Kommo para msgid %s sin mensaje en Odoo', msgid)
+            return True
+
+        error = payload.get('error') or payload.get('error_text')
+        message.update_delivery_state(delivery_state, error=error)
+        return True
+
+    @api.model
     def enqueue_from_kommo(self, payload):
         """Parse Kommo webhook v2 and queue conversational reply."""
         parsed = self._parse_kommo_payload(payload)

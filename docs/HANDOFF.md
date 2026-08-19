@@ -1,7 +1,7 @@
 # Entrega — Integración Odoo · Kommo · WhatsApp · Claude
 
 **Proyecto:** Ragnar Capital  
-**Módulo:** `ragnar_whatsapp_integration` v17.0.1.1.0  
+**Módulo:** `ragnar_whatsapp_integration` v17.0.1.2.0  
 **Estado:** Completo a nivel de código. Pendiente solo configuración del cliente.
 
 ## Qué se entrega

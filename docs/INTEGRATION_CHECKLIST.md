@@ -7,8 +7,11 @@
 - [x] Historial y ventana 24h
 - [x] Cola async + reintentos + alerta
 - [x] Modo mock
-- [x] Webhook GET/POST
+- [x] Webhook GET/POST (+ estado de entrega)
 - [x] Kanban de conversaciones
+- [x] Validación pares de moneda
+- [x] Server actions + guía de mapeo
+- [x] Especificación v3 consolidada en `docs/spec/`
 - [x] Tests unitarios
 
 ## Antes del go-live (cliente)

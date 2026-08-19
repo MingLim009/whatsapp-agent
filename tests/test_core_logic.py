@@ -104,5 +104,20 @@ class TestCurrencyPairs(unittest.TestCase):
         self.assertNotIn(('USD', 'BOB'), SUPPORTED_PAIRS)
 
 
+def map_delivery_status(status_code):
+    return {1: 'delivered', 2: 'read', -1: 'failed'}.get(int(status_code))
+
+
+class TestDeliveryStatus(unittest.TestCase):
+    def test_delivered(self):
+        self.assertEqual(map_delivery_status(1), 'delivered')
+
+    def test_read(self):
+        self.assertEqual(map_delivery_status(2), 'read')
+
+    def test_failed(self):
+        self.assertEqual(map_delivery_status(-1), 'failed')
+
+
 if __name__ == '__main__':
     unittest.main()

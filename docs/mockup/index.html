@@ -66,6 +66,7 @@
         </button>
         <div class="topbar-title" id="pageTitle">Resumen del proyecto</div>
         <div class="topbar-actions">
+          <span class="pill pill-version">v17.0.1.2.0</span>
           <span class="pill pill-mock">Modo mock</span>
           <span class="pill pill-live">Odoo 17</span>
           <div class="avatar-sm">RC</div>
@@ -78,7 +79,7 @@
           <div class="hero-banner">
             <div class="hero-banner__glow"></div>
             <div class="hero-banner__inner">
-              <span class="eyebrow">Integración Odoo · Kommo · Claude</span>
+              <span class="eyebrow">Borrador v3 · Odoo · Kommo · Claude</span>
               <h1>Bot WhatsApp para operaciones de cambio</h1>
               <p>Notifica proactivamente a sus clientes y mantiene conversaciones automáticas con contexto real de cada operación.</p>
               <div class="hero-actions">
@@ -90,9 +91,14 @@
 
           <div class="hero-stats">
             <div class="metric-card">
+              <span>Avance del proyecto</span>
+              <strong>~70%</strong>
+              <small>Código base completo</small>
+            </div>
+            <div class="metric-card">
               <span>Operaciones / día</span>
               <strong>~500</strong>
-              <small>Volumen estimado</small>
+              <small>Volumen estimado (spec v3)</small>
             </div>
             <div class="metric-card">
               <span>Flujos activos</span>
@@ -102,12 +108,7 @@
             <div class="metric-card">
               <span>Pares de moneda</span>
               <strong>4</strong>
-              <small>BOB, PEN, USD, USDINT</small>
-            </div>
-            <div class="metric-card">
-              <span>Mensajes / operación</span>
-              <strong>2+</strong>
-              <small>Mínimo garantizado</small>
+              <small>BOB↔PEN · BOB→USD · BOB→USDINT</small>
             </div>
           </div>
 
@@ -129,19 +130,24 @@
             <div class="card">
               <h3>Completado</h3>
               <ul class="check-list">
-                <li>Módulo Odoo instalable (v17.0.1.1.0)</li>
+                <li>Módulo Odoo instalable (v17.0.1.2.0)</li>
                 <li>Flujos de apertura, cierre y conversación</li>
                 <li>Historial, ventana 24 h y cola async</li>
-                <li>Tablero Kanban y modo mock</li>
+                <li>Tablero Kanban, modo mock y guía de mapeo</li>
+                <li>Validación de pares de moneda (BOB/PEN/USD/USDINT)</li>
+                <li>Webhook con estado de entrega (entregado/leído/fallo)</li>
+                <li>Server actions para apertura y cierre</li>
+                <li>Especificación v3 consolidada en documentación</li>
               </ul>
             </div>
             <div class="card card--muted">
               <h3>Pendiente (cliente)</h3>
               <ul class="pending-list">
                 <li>Acceso a Odoo staging / producción</li>
-                <li>Credenciales Kommo + URL HTTPS</li>
-                <li>Plantillas Meta aprobadas</li>
-                <li>API key Claude y go-live</li>
+                <li>Credenciales Kommo + URL HTTPS pública</li>
+                <li>Plantillas Meta aprobadas (apertura y cierre)</li>
+                <li>API key Claude y pruebas E2E reales</li>
+                <li>Mapeo al modelo real de operaciones (si aplica)</li>
               </ul>
             </div>
           </div>
@@ -177,8 +183,8 @@
                 <h3>Operación concluida</h3>
                 <p>Al cargar el voucher y pasar a estado “concluida”:</p>
                 <div class="split-logic">
-                  <div class="logic-box"><strong>Ventana cerrada</strong><p>Plantilla fija de cierre por Meta.</p></div>
-                  <div class="logic-box logic-highlight"><strong>Ventana abierta (24 h)</strong><p>Claude redacta cierre personalizado.</p></div>
+                  <div class="logic-box"><strong>Ventana cerrada</strong><p>Plantilla Meta de cierre:</p><blockquote class="logic-quote">“Tu orden ya fue concluida. Revisa tu correo para obtener el voucher.”</blockquote></div>
+                  <div class="logic-box logic-highlight"><strong>Ventana abierta (24 h)</strong><p>Claude redacta cierre personalizado con contexto de la operación.</p></div>
                 </div>
               </div>
             </article>
@@ -234,6 +240,15 @@
                   <td>5.000 → 725</td>
                   <td><span class="status status-confirmed">Confirmada</span></td>
                   <td><span class="status status-sent">Apertura ✓</span></td>
+                  <td><button class="btn-icon">→</button></td>
+                </tr>
+                <tr>
+                  <td><strong>OP/2026/00121</strong><br><small>Hoy 07:30</small></td>
+                  <td><div class="cell-user"><div class="avatar-xs">CP</div>Carlos Paredes</div></td>
+                  <td><span class="pair-badge">PEN → BOB</span></td>
+                  <td>550 → 1.000</td>
+                  <td><span class="status status-done">Concluida</span></td>
+                  <td><span class="status status-sent">Completo ✓</span></td>
                   <td><button class="btn-icon">→</button></td>
                 </tr>
                 <tr class="row-clickable" data-goto="conversations">
@@ -377,6 +392,13 @@
               <div class="form-field"><label>Modelo técnico</label><input type="text" value="ragnar.money.operation" readonly></div>
               <div class="form-field"><label>Estados creada</label><input type="text" value="draft, confirmed, processing" readonly></div>
               <div class="form-field"><label>Estados concluida</label><input type="text" value="done" readonly></div>
+              <div class="form-field"><label>Pares soportados</label><input type="text" value="BOB→PEN, PEN→BOB, BOB→USD, BOB→USDINT" readonly></div>
+            </div>
+            <div class="card settings-group">
+              <h3>Documentación</h3>
+              <div class="form-field"><label>Especificación</label><input type="text" value="Borrador funcional/técnico v3" readonly></div>
+              <div class="form-field"><label>Decisiones técnicas</label><input type="text" value="Ventana 24h · estados · Claude Haiku" readonly></div>
+              <div class="form-field"><label>Guía de mapeo</label><input type="text" value="Conectar modelo real de operaciones" readonly></div>
             </div>
           </div>
         </section>

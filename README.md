@@ -35,6 +35,9 @@ Módulo Odoo 17 listo para instalar. Implementa el borrador funcional/técnico v
 
 ## Documentación
 
+- [Especificación v3 (borrador)](docs/spec/SPEC_v3.md)
+- [Decisiones técnicas](docs/DECISIONS.md)
+- [Guía de mapeo al modelo real](docs/MAPPING_GUIDE.md)
 - [Entrega / handoff](docs/HANDOFF.md)
 - [Checklist go-live](docs/INTEGRATION_CHECKLIST.md)
 - [Referencias de diseño](docs/DESIGN_REFERENCES.md)

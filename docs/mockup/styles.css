@@ -164,6 +164,12 @@ body {
   border-color: transparent;
 }
 
+.pill-version {
+  background: var(--sidebar);
+  color: #fff;
+  border-color: transparent;
+}
+
 .avatar-sm {
   width: 34px;
   height: 34px;
@@ -541,6 +547,17 @@ blockquote {
 
 .logic-box strong { display: block; font-size: 13px; margin-bottom: 6px; }
 .logic-box p { font-size: 13px; color: var(--text-secondary); margin: 0; }
+
+.logic-quote {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text);
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
 
 /* ── Tables ── */
 .toolbar { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }

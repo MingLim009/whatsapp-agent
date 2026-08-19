@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_whatsapp_notify_opening" model="ir.actions.server">
+        <field name="name">WhatsApp: notificar apertura de operación</field>
+        <field name="model_id" ref="model_ragnar_money_operation"/>
+        <field name="binding_model_id" ref="model_ragnar_money_operation"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">records.action_whatsapp_notify_operation_created()</field>
+    </record>
+
+    <record id="action_whatsapp_notify_closing" model="ir.actions.server">
+        <field name="name">WhatsApp: notificar cierre de operación</field>
+        <field name="model_id" ref="model_ragnar_money_operation"/>
+        <field name="binding_model_id" ref="model_ragnar_money_operation"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">records.action_whatsapp_notify_operation_concluded()</field>
+    </record>
+</odoo>

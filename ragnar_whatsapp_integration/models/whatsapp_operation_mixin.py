@@ -142,6 +142,14 @@ class WhatsappOperationMixin(models.AbstractModel):
             self.sudo().write({'whatsapp_conversation_id': conversation.id})
         return conversation
 
+    def _whatsapp_validate_currency_pair(self):
+        """Return True if the operation currency pair is supported for WhatsApp."""
+        self.ensure_one()
+        code_from, code_to = self._whatsapp_get_currency_pair()
+        if not code_from or not code_to:
+            return False
+        return (code_from, code_to) in SUPPORTED_CURRENCY_PAIRS
+
     def _whatsapp_build_operation_context(self):
         self.ensure_one()
         code_from, code_to = self._whatsapp_get_currency_pair()
@@ -168,6 +176,15 @@ class WhatsappOperationMixin(models.AbstractModel):
                 continue
             if not record._whatsapp_is_created_state():
                 continue
+            if not record._whatsapp_validate_currency_pair():
+                code_from, code_to = record._whatsapp_get_currency_pair()
+                _logger.warning(
+                    'Operación %s omitida para WhatsApp: par no soportado %s→%s',
+                    record.id,
+                    code_from,
+                    code_to,
+                )
+                continue
             try:
                 partner = record._whatsapp_get_partner()
                 conversation = record._whatsapp_get_or_create_conversation()
@@ -193,6 +210,15 @@ class WhatsappOperationMixin(models.AbstractModel):
             if record.whatsapp_notified_close:
                 continue
             if not record._whatsapp_is_concluded_state():
+                continue
+            if not record._whatsapp_validate_currency_pair():
+                code_from, code_to = record._whatsapp_get_currency_pair()
+                _logger.warning(
+                    'Cierre WhatsApp omitido para operación %s: par no soportado %s→%s',
+                    record.id,
+                    code_from,
+                    code_to,
+                )
                 continue
             try:
                 partner = record._whatsapp_get_partner()

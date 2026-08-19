@@ -21,7 +21,7 @@ Les compartimos el estado actual del proyecto conforme al borrador funcional y t
 
 ## Detalle de lo completado
 
-### 1. Módulo Odoo instalable (v17.0.1.1.0)
+### 1. Módulo Odoo instalable (v17.0.1.2.0)
 
 Se desarrolló el módulo `ragnar_whatsapp_integration`, alineado con la arquitectura acordada: toda la lógica y los datos permanecen en Odoo; las únicas salidas externas son Kommo (WhatsApp) y Claude (texto dinámico).
 

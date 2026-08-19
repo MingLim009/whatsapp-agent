@@ -47,5 +47,5 @@ class KommoWebhookController(http.Controller):
             _logger.exception('Webhook Kommo con JSON inválido')
             return request.make_response('Bad request', status=400)
 
-        request.env['whatsapp.inbound.service'].sudo().enqueue_from_kommo(payload)
+        request.env['whatsapp.inbound.service'].sudo().process_webhook(payload)
         return request.make_response('OK', status=200)
