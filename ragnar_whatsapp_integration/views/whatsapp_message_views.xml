@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_whatsapp_message_tree" model="ir.ui.view">
+        <field name="name">whatsapp.message.tree</field>
+        <field name="model">whatsapp.message</field>
+        <field name="arch" type="xml">
+            <tree string="Mensajes WhatsApp">
+                <field name="message_date"/>
+                <field name="partner_id"/>
+                <field name="direction"/>
+                <field name="source"/>
+                <field name="delivery_state"/>
+                <field name="body"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_whatsapp_message_form" model="ir.ui.view">
+        <field name="name">whatsapp.message.form</field>
+        <field name="model">whatsapp.message</field>
+        <field name="arch" type="xml">
+            <form string="Mensaje WhatsApp">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="conversation_id"/>
+                            <field name="partner_id"/>
+                            <field name="message_date"/>
+                            <field name="direction"/>
+                            <field name="source"/>
+                        </group>
+                        <group>
+                            <field name="delivery_state"/>
+                            <field name="kommo_message_id"/>
+                            <field name="operation_model"/>
+                            <field name="operation_id"/>
+                            <field name="queue_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="body"/>
+                        <field name="delivery_error"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_whatsapp_message" model="ir.actions.act_window">
+        <field name="name">Mensajes WhatsApp</field>
+        <field name="res_model">whatsapp.message</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

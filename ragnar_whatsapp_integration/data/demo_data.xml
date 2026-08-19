@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Demo partner with valid WhatsApp for local testing -->
+    <record id="demo_partner_cliente" model="res.partner">
+        <field name="name">Cliente Demo Ragnar</field>
+        <field name="whatsapp_phone">+59170000001</field>
+        <field name="email">cliente.demo@ragnar.local</field>
+        <field name="phone">+59170000001</field>
+    </record>
+
+    <record id="demo_operation_bob_pen" model="ragnar.money.operation">
+        <field name="partner_id" ref="demo_partner_cliente"/>
+        <field name="currency_from">BOB</field>
+        <field name="currency_to">PEN</field>
+        <field name="amount_from">1000.00</field>
+        <field name="amount_to">550.00</field>
+        <field name="state">confirmed</field>
+    </record>
+</odoo>

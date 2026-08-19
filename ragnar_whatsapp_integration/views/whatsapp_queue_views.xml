@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_whatsapp_queue_tree" model="ir.ui.view">
+        <field name="name">whatsapp.message.queue.tree</field>
+        <field name="model">whatsapp.message.queue</field>
+        <field name="arch" type="xml">
+            <tree string="Cola WhatsApp" decoration-danger="state == 'failed'">
+                <field name="create_date"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="payload_type"/>
+                <field name="state"/>
+                <field name="retry_count"/>
+                <field name="last_error"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_whatsapp_queue_form" model="ir.ui.view">
+        <field name="name">whatsapp.message.queue.form</field>
+        <field name="model">whatsapp.message.queue</field>
+        <field name="arch" type="xml">
+            <form string="Job WhatsApp">
+                <header>
+                    <button name="action_retry" type="object" string="Reintentar" class="btn-primary"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="conversation_id"/>
+                            <field name="payload_type"/>
+                            <field name="priority"/>
+                        </group>
+                        <group>
+                            <field name="retry_count"/>
+                            <field name="next_retry_date"/>
+                            <field name="processed_date"/>
+                            <field name="message_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="body"/>
+                        <field name="claude_prompt_context"/>
+                        <field name="last_error"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_whatsapp_queue" model="ir.actions.act_window">
+        <field name="name">Cola de envío</field>
+        <field name="res_model">whatsapp.message.queue</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state', 'in', ['pending', 'processing', 'failed'])]</field>
+    </record>
+</odoo>

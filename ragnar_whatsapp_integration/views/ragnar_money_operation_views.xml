@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ragnar_money_operation_tree" model="ir.ui.view">
+        <field name="name">ragnar.money.operation.tree</field>
+        <field name="model">ragnar.money.operation</field>
+        <field name="arch" type="xml">
+            <tree string="Operaciones">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="currency_from"/>
+                <field name="amount_from"/>
+                <field name="currency_to"/>
+                <field name="amount_to"/>
+                <field name="state"/>
+                <field name="whatsapp_notified_open"/>
+                <field name="whatsapp_notified_close"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ragnar_money_operation_form" model="ir.ui.view">
+        <field name="name">ragnar.money.operation.form</field>
+        <field name="model">ragnar.money.operation</field>
+        <field name="arch" type="xml">
+            <form string="Operación">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirmar"
+                            invisible="state != 'draft'" class="btn-primary"/>
+                    <button name="action_process" type="object" string="En proceso"
+                            invisible="state not in ('draft', 'confirmed')"/>
+                    <button name="action_done" type="object" string="Concluir / voucher"
+                            invisible="state not in ('confirmed', 'processing')" class="btn-primary"/>
+                    <button name="action_cancel" type="object" string="Cancelar"
+                            invisible="state in ('done', 'cancelled')"/>
+                    <button name="action_whatsapp_force_opening" type="object"
+                            string="Reenviar WhatsApp apertura" class="btn-secondary"/>
+                    <button name="action_whatsapp_force_closing" type="object"
+                            string="Reenviar WhatsApp cierre" class="btn-secondary"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,processing,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="notes"/>
+                        </group>
+                        <group>
+                            <field name="currency_from"/>
+                            <field name="amount_from"/>
+                            <field name="currency_to"/>
+                            <field name="amount_to"/>
+                            <field name="voucher_attached"/>
+                        </group>
+                    </group>
+                    <group string="WhatsApp">
+                        <field name="whatsapp_notified_open"/>
+                        <field name="whatsapp_notified_close"/>
+                        <field name="whatsapp_conversation_id"/>
+                        <field name="whatsapp_message_count"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ragnar_money_operation" model="ir.actions.act_window">
+        <field name="name">Operaciones de cambio</field>
+        <field name="res_model">ragnar.money.operation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

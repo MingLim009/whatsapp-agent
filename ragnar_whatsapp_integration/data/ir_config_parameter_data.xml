@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_ragnar_money_operation" model="ir.sequence">
+        <field name="name">Operación Ragnar</field>
+        <field name="code">ragnar.money.operation</field>
+        <field name="prefix">OP/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="param_mock_mode" model="ir.config_parameter">
+        <field name="key">ragnar_whatsapp.mock_mode</field>
+        <field name="value">True</field>
+    </record>
+    <record id="param_operation_model" model="ir.config_parameter">
+        <field name="key">ragnar_whatsapp.operation_model</field>
+        <field name="value">ragnar.money.operation</field>
+    </record>
+    <record id="param_template_opening_body" model="ir.config_parameter">
+        <field name="key">ragnar_whatsapp.template_opening_body</field>
+        <field name="value">Generaste una operación en nuestra web. Ya estamos trabajando en ella.</field>
+    </record>
+    <record id="param_template_closing_body" model="ir.config_parameter">
+        <field name="key">ragnar_whatsapp.template_closing_body</field>
+        <field name="value">Tu orden ya fue concluida. Revisa tu correo para obtener el voucher.</field>
+    </record>
+    <record id="param_operation_created_states" model="ir.config_parameter">
+        <field name="key">ragnar_whatsapp.operation_created_states</field>
+        <field name="value">draft,confirmed,processing,new,pending</field>
+    </record>
+    <record id="param_operation_concluded_states" model="ir.config_parameter">
+        <field name="key">ragnar_whatsapp.operation_concluded_states</field>
+        <field name="value">done,concluded,completed</field>
+    </record>
+    <record id="param_claude_model" model="ir.config_parameter">
+        <field name="key">ragnar_whatsapp.claude_model</field>
+        <field name="value">claude-3-5-haiku-20241022</field>
+    </record>
+    <record id="param_claude_max_tokens" model="ir.config_parameter">
+        <field name="key">ragnar_whatsapp.claude_max_tokens</field>
+        <field name="value">512</field>
+    </record>
+</odoo>

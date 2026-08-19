@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_whatsapp_conversation_user,whatsapp.conversation.user,model_whatsapp_conversation,group_whatsapp_user,1,0,0,0
+access_whatsapp_conversation_manager,whatsapp.conversation.manager,model_whatsapp_conversation,group_whatsapp_manager,1,1,1,1
+access_whatsapp_message_user,whatsapp.message.user,model_whatsapp_message,group_whatsapp_user,1,0,0,0
+access_whatsapp_message_manager,whatsapp.message.manager,model_whatsapp_message,group_whatsapp_manager,1,1,1,1
+access_whatsapp_queue_user,whatsapp.message.queue.user,model_whatsapp_message_queue,group_whatsapp_user,1,0,0,0
+access_whatsapp_queue_manager,whatsapp.message.queue.manager,model_whatsapp_message_queue,group_whatsapp_manager,1,1,1,1
+access_ragnar_money_operation_user,ragnar.money.operation.user,model_ragnar_money_operation,group_whatsapp_user,1,1,1,0
+access_ragnar_money_operation_manager,ragnar.money.operation.manager,model_ragnar_money_operation,group_whatsapp_manager,1,1,1,1

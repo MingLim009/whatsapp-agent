@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ragnar Capital · WhatsApp Bot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.03 2 11c0 1.85.52 3.58 1.42 5.08L2 22l6.18-1.35A9.96 9.96 0 0012 20c5.52 0 10-4.03 10-9s-4.48-9-10-9z" fill="currentColor"/></svg>
+        </div>
+        <div>
+          <strong>Ragnar Capital</strong>
+          <span>WhatsApp Bot · Odoo</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <p class="nav-label">General</p>
+        <button class="nav-item active" data-page="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Resumen
+        </button>
+        <button class="nav-item" data-page="flows">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Flujos del bot
+        </button>
+
+        <p class="nav-label">Operación</p>
+        <button class="nav-item" data-page="operations">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Operaciones
+        </button>
+        <button class="nav-item" data-page="conversations">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Conversaciones
+        </button>
+        <button class="nav-item" data-page="messages">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1" fill="currentColor"/><circle cx="4" cy="12" r="1" fill="currentColor"/><circle cx="4" cy="18" r="1" fill="currentColor"/></svg>
+          Historial
+        </button>
+        <button class="nav-item" data-page="queue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Cola de envío
+        </button>
+
+        <p class="nav-label">Sistema</p>
+        <button class="nav-item" data-page="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Configuración
+        </button>
+      </nav>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-title" id="pageTitle">Resumen del proyecto</div>
+        <div class="topbar-actions">
+          <span class="pill pill-mock">Modo mock</span>
+          <span class="pill pill-live">Odoo 17</span>
+          <div class="avatar-sm">RC</div>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <section class="page active" id="page-overview">
+          <div class="hero-banner">
+            <div class="hero-banner__glow"></div>
+            <div class="hero-banner__inner">
+              <span class="eyebrow">Integración Odoo · Kommo · Claude</span>
+              <h1>Bot WhatsApp para operaciones de cambio</h1>
+              <p>Notifica proactivamente a sus clientes y mantiene conversaciones automáticas con contexto real de cada operación.</p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" data-goto="flows">Ver flujos</button>
+                <button class="btn btn-glass" data-goto="conversations">Explorar panel</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="metric-card">
+              <span>Operaciones / día</span>
+              <strong>~500</strong>
+              <small>Volumen estimado</small>
+            </div>
+            <div class="metric-card">
+              <span>Flujos activos</span>
+              <strong>3</strong>
+              <small>Apertura · cierre · chat</small>
+            </div>
+            <div class="metric-card">
+              <span>Pares de moneda</span>
+              <strong>4</strong>
+              <small>BOB, PEN, USD, USDINT</small>
+            </div>
+            <div class="metric-card">
+              <span>Mensajes / operación</span>
+              <strong>2+</strong>
+              <small>Mínimo garantizado</small>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h2>Arquitectura</h2>
+            <p class="section-lead">Odoo es la fuente única de verdad. Kommo entrega WhatsApp; Claude redacta mensajes dinámicos.</p>
+            <div class="arch-flow">
+              <div class="arch-step"><div class="arch-icon">W</div><strong>Cliente</strong><span>WhatsApp</span></div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-step"><div class="arch-icon">K</div><strong>Kommo</strong><span>Canal API</span></div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-step arch-step--focus"><div class="arch-icon">O</div><strong>Odoo</strong><span>Lógica + historial</span></div>
+              <div class="arch-arrow">→</div>
+              <div class="arch-step"><div class="arch-icon">C</div><strong>Claude</strong><span>Redacción IA</span></div>
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div class="card">
+              <h3>Completado</h3>
+              <ul class="check-list">
+                <li>Módulo Odoo instalable (v17.0.1.1.0)</li>
+                <li>Flujos de apertura, cierre y conversación</li>
+                <li>Historial, ventana 24 h y cola async</li>
+                <li>Tablero Kanban y modo mock</li>
+              </ul>
+            </div>
+            <div class="card card--muted">
+              <h3>Pendiente (cliente)</h3>
+              <ul class="pending-list">
+                <li>Acceso a Odoo staging / producción</li>
+                <li>Credenciales Kommo + URL HTTPS</li>
+                <li>Plantillas Meta aprobadas</li>
+                <li>API key Claude y go-live</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-flows">
+          <div class="page-header">
+            <div>
+              <h1>Flujos del bot</h1>
+              <p>Los tres momentos clave del ciclo de vida de una operación.</p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-marker">1</div>
+              <div class="timeline-body card">
+                <div class="timeline-tag">Plantilla Meta</div>
+                <h3>Operación creada</h3>
+                <p>El cliente genera una orden en la web Odoo. El sistema envía automáticamente:</p>
+                <blockquote>“Generaste una operación en nuestra web. Ya estamos trabajando en ella.”</blockquote>
+                <div class="mini-flow">
+                  <span>Odoo crea operación</span><span class="flow-dot">→</span>
+                  <span>Encola mensaje</span><span class="flow-dot">→</span>
+                  <span>Kommo → WhatsApp</span>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-marker">2</div>
+              <div class="timeline-body card">
+                <div class="timeline-tag tag-dynamic">Plantilla o Claude</div>
+                <h3>Operación concluida</h3>
+                <p>Al cargar el voucher y pasar a estado “concluida”:</p>
+                <div class="split-logic">
+                  <div class="logic-box"><strong>Ventana cerrada</strong><p>Plantilla fija de cierre por Meta.</p></div>
+                  <div class="logic-box logic-highlight"><strong>Ventana abierta (24 h)</strong><p>Claude redacta cierre personalizado.</p></div>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-marker">3</div>
+              <div class="timeline-body card">
+                <div class="timeline-tag tag-dynamic">Claude dinámico</div>
+                <h3>Cliente responde</h3>
+                <p>Kommo notifica a Odoo vía webhook. El bot responde con contexto + historial.</p>
+                <div class="mini-flow">
+                  <span>WhatsApp entrante</span><span class="flow-dot">→</span>
+                  <span>Webhook Odoo</span><span class="flow-dot">→</span>
+                  <span>Claude</span><span class="flow-dot">→</span>
+                  <span>Envío Kommo</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page" id="page-operations">
+          <div class="page-header">
+            <div>
+              <h1>Operaciones de cambio</h1>
+              <p>Registro central en Odoo — fuente única de verdad.</p>
+            </div>
+            <button class="btn btn-primary">+ Nueva operación</button>
+          </div>
+          <div class="toolbar">
+            <input type="search" class="search-input" placeholder="Buscar operación o cliente…">
+            <select class="select-input"><option>Todos los estados</option></select>
+            <select class="select-input"><option>Todos los pares</option></select>
+          </div>
+          <div class="table-wrap card">
+            <table>
+              <thead>
+                <tr><th>Operación</th><th>Cliente</th><th>Par</th><th>Monto</th><th>Estado</th><th>WhatsApp</th><th></th></tr>
+              </thead>
+              <tbody>
+                <tr class="row-clickable" data-goto="conversations">
+                  <td><strong>OP/2026/00124</strong><br><small>Hoy 10:02</small></td>
+                  <td><div class="cell-user"><div class="avatar-xs">ML</div>María López</div></td>
+                  <td><span class="pair-badge">BOB → PEN</span></td>
+                  <td>1.000 → 550</td>
+                  <td><span class="status status-processing">En proceso</span></td>
+                  <td><span class="status status-sent">Apertura ✓</span></td>
+                  <td><button class="btn-icon">→</button></td>
+                </tr>
+                <tr>
+                  <td><strong>OP/2026/00123</strong><br><small>Hoy 09:41</small></td>
+                  <td><div class="cell-user"><div class="avatar-xs">JR</div>Jorge Ríos</div></td>
+                  <td><span class="pair-badge">BOB → USD</span></td>
+                  <td>5.000 → 725</td>
+                  <td><span class="status status-confirmed">Confirmada</span></td>
+                  <td><span class="status status-sent">Apertura ✓</span></td>
+                  <td><button class="btn-icon">→</button></td>
+                </tr>
+                <tr class="row-clickable" data-goto="conversations">
+                  <td><strong>OP/2026/00122</strong><br><small>Hoy 08:15</small></td>
+                  <td><div class="cell-user"><div class="avatar-xs">AC</div>Ana Castro</div></td>
+                  <td><span class="pair-badge">BOB → PEN</span></td>
+                  <td>1.000 → 550</td>
+                  <td><span class="status status-done">Concluida</span></td>
+                  <td><span class="status status-sent">Completo ✓</span></td>
+                  <td><button class="btn-icon">→</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="page" id="page-conversations">
+          <div class="page-header">
+            <div>
+              <h1>Conversaciones WhatsApp</h1>
+              <p>Tablero Kanban — seguimiento en tiempo real.</p>
+            </div>
+            <div class="header-filters">
+              <span class="filter-chip active">Todas</span>
+              <span class="filter-chip">Ventana 24h</span>
+              <span class="filter-chip">Sin respuesta</span>
+            </div>
+          </div>
+
+          <div class="kanban">
+            <div class="kanban-col">
+              <div class="kanban-head"><span>Nuevos contactos</span><span class="count">2</span></div>
+              <article class="kanban-card">
+                <div class="kanban-card-top"><div class="avatar-xs">ML</div><div><strong>María López</strong><small>Hace 5 min</small></div></div>
+                <p>Plantilla apertura enviada. Sin respuesta aún.</p>
+                <div class="kanban-tags"><span class="tag">BOB→PEN</span></div>
+              </article>
+              <article class="kanban-card">
+                <div class="kanban-card-top"><div class="avatar-xs">JR</div><div><strong>Jorge Ríos</strong><small>Hace 18 min</small></div></div>
+                <p>Generaste una operación en nuestra web…</p>
+                <div class="kanban-tags"><span class="tag">BOB→USD</span></div>
+              </article>
+            </div>
+            <div class="kanban-col">
+              <div class="kanban-head"><span>Chats en progreso</span><span class="count">1</span></div>
+              <article class="kanban-card kanban-card-active">
+                <div class="kanban-card-top"><div class="avatar-xs">AC</div><div><strong>Ana Castro</strong><small>Hace 2 min</small></div></div>
+                <p>¿Cuándo llega el depósito a la cuenta destino?</p>
+                <div class="kanban-tags"><span class="tag tag--accent">24h abierta</span><span class="tag">Claude</span></div>
+              </article>
+            </div>
+            <div class="kanban-col">
+              <div class="kanban-head"><span>Pendiente respuesta</span><span class="count">1</span></div>
+              <article class="kanban-card">
+                <div class="kanban-card-top"><div class="avatar-xs">DP</div><div><strong>Diego Paz</strong><small>Hace 1 h</small></div></div>
+                <p>Preguntó por voucher. Ventana cerrada.</p>
+                <div class="kanban-tags"><span class="tag">Plantilla</span></div>
+              </article>
+            </div>
+            <div class="kanban-col">
+              <div class="kanban-head"><span>Finalizados</span><span class="count">1</span></div>
+              <article class="kanban-card">
+                <div class="kanban-card-top"><div class="avatar-xs">LS</div><div><strong>Lucía Sánchez</strong><small>Ayer</small></div></div>
+                <p>Tu orden ya fue concluida. Revisa tu correo…</p>
+                <div class="kanban-tags"><span class="tag tag--accent">Cierre enviado</span></div>
+              </article>
+            </div>
+          </div>
+
+          <div class="chat-preview card">
+            <div class="chat-preview-head">
+              <div class="cell-user"><div class="avatar-xs">AC</div><div><strong>Ana Castro</strong><small>+591 7000-0001 · OP/2026/00122</small></div></div>
+              <span class="tag tag--accent">Ventana 24h activa</span>
+            </div>
+            <div class="chat-window">
+              <div class="bubble out">Generaste una operación en nuestra web. Ya estamos trabajando en ella.<time>10:02 · Plantilla</time></div>
+              <div class="bubble in">¿Cuándo llega el depósito a la cuenta destino?<time>10:15 · Cliente</time></div>
+              <div class="bubble out bubble-ai">Hola Ana, tu operación OP/2026/00122 por 1.000 BOB → 550 PEN está en proceso. Te avisaremos en cuanto se confirme el depósito.<time>10:15 · Claude</time></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-messages">
+          <div class="page-header">
+            <div><h1>Historial de mensajes</h1><p>Auditoría completa de entrantes y salientes.</p></div>
+          </div>
+          <div class="table-wrap card">
+            <table>
+              <thead><tr><th>Fecha</th><th>Cliente</th><th>Dirección</th><th>Origen</th><th>Mensaje</th><th>Estado</th></tr></thead>
+              <tbody>
+                <tr><td>10:15</td><td>Ana Castro</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-claude">Claude</span></td><td class="msg-cell">Hola Ana, tu operación OP/2026/00122…</td><td><span class="status status-sent">Enviado</span></td></tr>
+                <tr><td>10:15</td><td>Ana Castro</td><td><span class="dir dir-in">Entrante</span></td><td><span class="origin origin-system">Cliente</span></td><td class="msg-cell">¿Cuándo llega el depósito…?</td><td><span class="status status-delivered">Entregado</span></td></tr>
+                <tr><td>10:02</td><td>María López</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-template">Plantilla</span></td><td class="msg-cell">Generaste una operación en nuestra web…</td><td><span class="status status-sent">Enviado</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="page" id="page-queue">
+          <div class="page-header">
+            <div><h1>Cola de envío</h1><p>Procesamiento async con reintentos automáticos.</p></div>
+            <button class="btn btn-secondary">Procesar cola ahora</button>
+          </div>
+          <div class="queue-stats">
+            <div class="metric-card"><span>Completados</span><strong>847</strong></div>
+            <div class="metric-card"><span>Pendientes</span><strong>3</strong></div>
+            <div class="metric-card"><span>Procesando</span><strong>1</strong></div>
+            <div class="metric-card"><span>Fallidos</span><strong>0</strong></div>
+          </div>
+          <div class="table-wrap card">
+            <table>
+              <thead><tr><th>Job</th><th>Cliente</th><th>Tipo</th><th>Estado</th><th>Reintentos</th></tr></thead>
+              <tbody>
+                <tr><td><strong>#1042</strong></td><td>María López</td><td>Plantilla apertura</td><td><span class="status status-done">Completado</span></td><td>0</td></tr>
+                <tr><td><strong>#1043</strong></td><td>Ana Castro</td><td>Respuesta Claude</td><td><span class="status status-processing">Procesando</span></td><td>0</td></tr>
+                <tr><td><strong>#1044</strong></td><td>Diego Paz</td><td>Plantilla cierre</td><td><span class="status status-confirmed">Pendiente</span></td><td>0</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="page" id="page-settings">
+          <div class="page-header">
+            <div><h1>Configuración</h1><p>Credenciales e integraciones — Ajustes → WhatsApp Bot.</p></div>
+          </div>
+          <div class="settings-grid">
+            <div class="card settings-group">
+              <h3>Kommo / WhatsApp</h3>
+              <div class="form-field"><label>Scope ID</label><input type="text" placeholder="Pendiente" disabled></div>
+              <div class="form-field"><label>Channel Secret</label><input type="password" value="••••••••" disabled></div>
+              <div class="form-field"><label>Webhook URL</label><input type="text" value="https://odoo.ragnar.com/whatsapp/kommo/webhook" readonly></div>
+            </div>
+            <div class="card settings-group">
+              <h3>Claude AI</h3>
+              <div class="form-field"><label>API Key</label><input type="password" value="••••••••" disabled></div>
+              <div class="form-field"><label>Modelo</label><input type="text" value="claude-3-5-haiku-20241022" readonly></div>
+              <div class="form-field toggle-field"><div><label>Modo mock</label><small>Pruebas sin credenciales</small></div><div class="toggle on"><span></span></div></div>
+            </div>
+            <div class="card settings-group">
+              <h3>Operaciones Odoo</h3>
+              <div class="form-field"><label>Modelo técnico</label><input type="text" value="ragnar.money.operation" readonly></div>
+              <div class="form-field"><label>Estados creada</label><input type="text" value="draft, confirmed, processing" readonly></div>
+              <div class="form-field"><label>Estados concluida</label><input type="text" value="done" readonly></div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
