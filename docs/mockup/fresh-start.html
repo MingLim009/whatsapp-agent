@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ragnar — Fresh Start</title>
+  <style>
+    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0f1419;color:#fff;font-family:system-ui,sans-serif}
+    .card{background:#1a222d;padding:32px;border-radius:16px;max-width:440px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+    h1{margin:0 0 8px;font-size:1.4rem}
+    p{color:#9aa3af;line-height:1.5}
+    .cred{background:#0b1016;border-radius:10px;padding:14px;margin:18px 0;font-family:ui-monospace,monospace}
+    a.btn{display:block;background:#128c7e;color:#fff;text-decoration:none;padding:14px;border-radius:10px;font-weight:700;margin-top:12px}
+    .warn{color:#fbbf24;font-size:.9rem;margin-top:16px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Fresh Odoo start</h1>
+    <p>Database was wiped. Use only this account:</p>
+    <div class="cred">
+      Email: <strong>admin</strong><br>
+      Password: <strong>admin</strong>
+    </div>
+    <a class="btn" href="http://localhost:8069/web/login?db=ragnar" target="_blank" rel="noopener">Open login</a>
+    <p class="warn">Do not use Gmail / Sign up. If the browser still loops, click “Delete cookies” for localhost first.</p>
+  </div>
+</body>
+</html>

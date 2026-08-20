@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Opening Ragnar WhatsApp Bot…</title>
+  <style>
+    body{font-family:system-ui,sans-serif;background:#141820;color:#fff;display:grid;place-items:center;min-height:100vh;margin:0}
+    .box{background:#1e2430;padding:28px;border-radius:14px;max-width:420px;text-align:center}
+    a{color:#5eead4}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Opening Odoo…</h1>
+    <p id="msg">Clearing stuck session and opening the app.</p>
+    <p><a id="fallback" href="http://localhost:8069/web?db=ragnar">Click here if nothing happens</a></p>
+  </div>
+  <script>
+    (async function () {
+      const msg = document.getElementById('msg');
+      try {
+        // Drop old session that may be stuck on login_successful
+        await fetch('http://localhost:8069/web/session/logout', { credentials: 'include', redirect: 'manual' });
+      } catch (e) {}
+      msg.textContent = 'Go to login, then you will enter the app.';
+      // Fresh login page with explicit redirect target into web client
+      window.location.replace('http://localhost:8069/web/login?db=ragnar&redirect=/web');
+    })();
+  </script>
+</body>
+</html>

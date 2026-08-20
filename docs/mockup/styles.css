@@ -203,6 +203,63 @@ body {
   color: white;
 }
 
+.progress-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(18, 140, 126, 0.25);
+  background: linear-gradient(135deg, #e7f6f4 0%, #ffffff 55%);
+}
+
+.progress-banner__badge {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0e7368;
+  background: #cff1ec;
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.progress-banner__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.progress-banner__body strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.progress-banner__body p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.progress-banner__body code {
+  font-size: 12px;
+  background: rgba(20, 24, 32, 0.06);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.row-verified td {
+  background: rgba(18, 140, 126, 0.06);
+}
+
+@media (max-width: 900px) {
+  .progress-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .hero-banner__glow { display: none; }
 
 .hero-banner__inner { max-width: 600px; }

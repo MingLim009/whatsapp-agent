@@ -15,7 +15,7 @@
     """,
     'author': 'Ragnar Capital',
     'license': 'LGPL-3',
-    'depends': ['base', 'mail', 'contacts'],
+    'depends': ['base', 'base_setup', 'mail', 'contacts'],
     'data': [
         'security/whatsapp_security.xml',
         'security/ir.model.access.csv',

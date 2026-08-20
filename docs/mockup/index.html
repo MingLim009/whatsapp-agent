@@ -84,21 +84,33 @@
               <p>Notifica proactivamente a sus clientes y mantiene conversaciones automáticas con contexto real de cada operación.</p>
               <div class="hero-actions">
                 <button class="btn btn-primary" data-goto="flows">Ver flujos</button>
-                <button class="btn btn-glass" data-goto="conversations">Explorar panel</button>
+                <button class="btn btn-glass" data-goto="operations">Ver prueba validada</button>
               </div>
             </div>
+          </div>
+
+          <div class="progress-banner card">
+            <div class="progress-banner__badge">Prueba mock validada</div>
+            <div class="progress-banner__body">
+              <strong>Flujo completo verificado en Odoo 17 (Docker)</strong>
+              <p>
+                Operación <code>OP/2026/00001</code> · Cliente Test Client · 1.000 BOB → 550 PEN · estado Concluida.
+                Plantillas de <em>apertura</em> y <em>cierre</em> generadas y marcadas como Enviado (modo mock).
+              </p>
+            </div>
+            <button class="btn btn-secondary" data-goto="messages">Ver historial de prueba</button>
           </div>
 
           <div class="hero-stats">
             <div class="metric-card">
               <span>Avance del proyecto</span>
               <strong>~70%</strong>
-              <small>Código base completo</small>
+              <small>Base lista · falta go-live real</small>
             </div>
             <div class="metric-card">
-              <span>Operaciones / día</span>
-              <strong>~500</strong>
-              <small>Volumen estimado (spec v3)</small>
+              <span>Prueba E2E mock</span>
+              <strong>OK</strong>
+              <small>Apertura + cierre en Odoo</small>
             </div>
             <div class="metric-card">
               <span>Flujos activos</span>
@@ -137,6 +149,7 @@
                 <li>Validación de pares de moneda (BOB/PEN/USD/USDINT)</li>
                 <li>Webhook con estado de entrega (entregado/leído/fallo)</li>
                 <li>Server actions para apertura y cierre</li>
+                <li>Docker local + prueba E2E mock (OP/2026/00001)</li>
                 <li>Especificación v3 consolidada en documentación</li>
               </ul>
             </div>
@@ -224,6 +237,15 @@
                 <tr><th>Operación</th><th>Cliente</th><th>Par</th><th>Monto</th><th>Estado</th><th>WhatsApp</th><th></th></tr>
               </thead>
               <tbody>
+                <tr class="row-clickable row-verified" data-goto="messages">
+                  <td><strong>OP/2026/00001</strong><br><small>Prueba real · 20/08</small></td>
+                  <td><div class="cell-user"><div class="avatar-xs">TC</div>Test Client</div></td>
+                  <td><span class="pair-badge">BOB → PEN</span></td>
+                  <td>1.000 → 550</td>
+                  <td><span class="status status-done">Concluida</span></td>
+                  <td><span class="status status-sent">Completo ✓</span></td>
+                  <td><button class="btn-icon">→</button></td>
+                </tr>
                 <tr class="row-clickable" data-goto="conversations">
                   <td><strong>OP/2026/00124</strong><br><small>Hoy 10:02</small></td>
                   <td><div class="cell-user"><div class="avatar-xs">ML</div>María López</div></td>
@@ -339,6 +361,8 @@
             <table>
               <thead><tr><th>Fecha</th><th>Cliente</th><th>Dirección</th><th>Origen</th><th>Mensaje</th><th>Estado</th></tr></thead>
               <tbody>
+                <tr class="row-verified"><td>04:29</td><td>Test Client</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-template">Cierre</span></td><td class="msg-cell">Tu operación ha sido completada. Revisa tu correo para obtener el voucher.</td><td><span class="status status-sent">Enviado</span></td></tr>
+                <tr class="row-verified"><td>04:23</td><td>Test Client</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-template">Apertura</span></td><td class="msg-cell">Generaste una operación en nuestra web. Ya estamos trabajando en ella.</td><td><span class="status status-sent">Enviado</span></td></tr>
                 <tr><td>10:15</td><td>Ana Castro</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-claude">Claude</span></td><td class="msg-cell">Hola Ana, tu operación OP/2026/00122…</td><td><span class="status status-sent">Enviado</span></td></tr>
                 <tr><td>10:15</td><td>Ana Castro</td><td><span class="dir dir-in">Entrante</span></td><td><span class="origin origin-system">Cliente</span></td><td class="msg-cell">¿Cuándo llega el depósito…?</td><td><span class="status status-delivered">Entregado</span></td></tr>
                 <tr><td>10:02</td><td>María López</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-template">Plantilla</span></td><td class="msg-cell">Generaste una operación en nuestra web…</td><td><span class="status status-sent">Enviado</span></td></tr>

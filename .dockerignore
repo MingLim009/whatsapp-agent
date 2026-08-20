@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.git/
+.vercel/
+node_modules/
+docs/mockup/
+borrador*.pdf
+borrador*.md
+*.log

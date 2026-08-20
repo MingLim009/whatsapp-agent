@@ -13,6 +13,46 @@ Módulo Odoo 17 listo para instalar. Implementa el borrador funcional/técnico v
 | Modo mock (sin Kommo/Claude) | Completo (activo por defecto) |
 | Credenciales / plantillas Meta / webhook HTTPS | **Pendiente del cliente** |
 
+## Ejecución local con Docker (Odoo completo)
+
+Requisitos: **Docker Desktop** + **WSL2** (en Windows puede requerir reinicio tras instalar WSL).
+
+```bash
+# Desde la raíz del proyecto
+docker compose up --build -d
+
+# Ver logs (primera vez: init DB ~2-5 min)
+docker compose logs -f odoo
+```
+
+Abrir **http://localhost:8069**
+
+| Campo | Valor |
+|-------|-------|
+| Base de datos | `ragnar` (creada automáticamente) |
+| Usuario | `admin` |
+| Contraseña | `admin` |
+
+Menú: **WhatsApp Bot** → Operaciones / Conversaciones / Cola. Modo mock activo por defecto.
+
+Windows PowerShell:
+
+```powershell
+.\scripts\docker-up.ps1
+```
+
+Detener:
+
+```bash
+docker compose down
+```
+
+Demo sin Docker (solo lógica):
+
+```bash
+python scripts/run_mock_demo.py
+```
+
 ## Instalación
 
 1. Copiar `ragnar_whatsapp_integration` a `addons/`

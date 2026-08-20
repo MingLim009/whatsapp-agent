@@ -36,7 +36,7 @@
     <menuitem id="menu_whatsapp_settings"
               name="Configuración"
               parent="menu_whatsapp_root"
-              action="base.action_res_config_settings"
+              action="base_setup.action_general_configuration"
               sequence="90"
               groups="group_whatsapp_manager"/>
 </odoo>
