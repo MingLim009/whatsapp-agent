@@ -5,8 +5,8 @@
   --font: "Inter", system-ui, -apple-system, sans-serif;
   --font-display: "Inter", system-ui, sans-serif;
 
-  --bg: #e8f4fc;
-  --bg-2: #f0f8ff;
+  --bg: #ffffff;
+  --bg-2: #ffffff;
   --surface: #ffffff;
   --sidebar: #0f2744;
   --sidebar-2: #163456;
@@ -33,8 +33,8 @@
   --teal: #14b8a6;
   --teal-soft: #ccfbf1;
 
-  --border: #d0e4f2;
-  --border-light: #eef6fb;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
   --neutral: #8fa3b8;
 
   --sidebar-w: 260px;
@@ -62,7 +62,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  background: linear-gradient(180deg, #ffffff 0%, var(--bg) 55%, #dbeafe 100%);
+  background: #ffffff;
   min-height: 100vh;
 }
 
@@ -192,8 +192,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255,255,255,0.78);
-  backdrop-filter: blur(12px);
+  background: #ffffff;
   border-bottom: 1px solid var(--border);
 }
 
@@ -277,19 +276,13 @@ body {
   border-radius: 22px;
   padding: 48px 44px;
   margin-bottom: 20px;
-  background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 100%);
+  background: #ffffff;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-md);
 }
 
 .hero-banner__glow {
-  position: absolute;
-  width: 360px;
-  height: 360px;
-  right: -70px;
-  top: -90px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.18), transparent 68%);
-  pointer-events: none;
+  display: none;
 }
 
 .hero-banner__inner { position: relative; z-index: 1; max-width: 620px; }
@@ -414,8 +407,8 @@ body {
   padding: 16px 20px;
   margin-bottom: 22px;
   border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--pink-soft), #fff 60%);
-  border: 1px solid rgba(14, 165, 233, 0.16);
+  background: #ffffff;
+  border: 1px solid var(--border);
   box-shadow: var(--shadow);
 }
 .progress-banner__badge {
@@ -474,7 +467,7 @@ body {
   padding: 22px;
   box-shadow: var(--shadow);
 }
-.card--muted { background: var(--border-light); }
+.card--muted { background: #ffffff; }
 .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
 
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -714,7 +707,7 @@ th {
   text-transform: uppercase;
   color: var(--text-muted);
   border-bottom: 1px solid var(--border);
-  background: #fafbff;
+  background: #ffffff;
 }
 td {
   padding: 13px 16px;
@@ -788,7 +781,7 @@ td small { color: var(--text-muted); font-size: 12px; }
   margin-bottom: 18px;
 }
 .kanban-col {
-  background: rgba(255,255,255,0.55);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 12px;
@@ -855,7 +848,7 @@ td small { color: var(--text-muted); font-size: 12px; }
   gap: 10px;
   padding: 16px;
   min-height: 220px;
-  background: linear-gradient(180deg, #f7f8ff, #fff);
+  background: #ffffff;
 }
 .bubble {
   max-width: 88%;
