@@ -67,7 +67,7 @@
         <div class="topbar-title" id="pageTitle">Resumen del proyecto</div>
         <div class="topbar-actions">
           <span class="pill pill-version">v17.0.1.2.0</span>
-          <span class="pill pill-mock">Modo mock</span>
+          <span class="pill pill-mock" id="mock-pill">Modo mock ON</span>
           <span class="pill pill-live">Odoo 17</span>
           <div class="avatar-sm">RC</div>
         </div>
@@ -83,22 +83,22 @@
               <h1>Bot WhatsApp para operaciones de cambio</h1>
               <p>Notifica proactivamente a sus clientes y mantiene conversaciones automáticas con contexto real de cada operación.</p>
               <div class="hero-actions">
-                <button class="btn btn-primary" data-goto="flows">Ver flujos</button>
-                <button class="btn btn-glass" data-goto="operations">Ver prueba validada</button>
+                <button class="btn btn-primary" id="btn-try-demo" type="button">Probar flujo ahora</button>
+                <button class="btn btn-glass" data-goto="flows" type="button">Ver flujos</button>
               </div>
             </div>
           </div>
 
           <div class="progress-banner card">
-            <div class="progress-banner__badge">Prueba mock validada</div>
+            <div class="progress-banner__badge">Simulador interactivo</div>
             <div class="progress-banner__body">
-              <strong>Flujo completo verificado en Odoo 17 (Docker)</strong>
+              <strong>Puedes probar el flujo aquí (mock)</strong>
               <p>
-                Operación <code>OP/2026/00001</code> · Cliente Test Client · 1.000 BOB → 550 PEN · estado Concluida.
-                Plantillas de <em>apertura</em> y <em>cierre</em> generadas y marcadas como Enviado (modo mock).
+                Crea una operación → se envía la plantilla de apertura → avanza a concluida → plantilla de cierre →
+                simula reply del cliente (Claude). La app real de Odoo está en <code>localhost:8069</code>.
               </p>
             </div>
-            <button class="btn btn-secondary" data-goto="messages">Ver historial de prueba</button>
+            <button class="btn btn-secondary" id="btn-try-demo-2" type="button" onclick="document.getElementById('btn-try-demo').click()">Crear operación</button>
           </div>
 
           <div class="hero-stats">
@@ -222,67 +222,32 @@
           <div class="page-header">
             <div>
               <h1>Operaciones de cambio</h1>
-              <p>Registro central en Odoo — fuente única de verdad.</p>
+              <p>Simulador del flujo Odoo — crea, avanza y dispara WhatsApp mock.</p>
             </div>
-            <button class="btn btn-primary">+ Nueva operación</button>
+            <button class="btn btn-primary" id="btn-new-op" type="button">+ Nueva operación</button>
           </div>
           <div class="toolbar">
-            <input type="search" class="search-input" placeholder="Buscar operación o cliente…">
-            <select class="select-input"><option>Todos los estados</option></select>
-            <select class="select-input"><option>Todos los pares</option></select>
+            <input type="search" class="search-input" id="ops-search" placeholder="Buscar operación o cliente…">
+            <select class="select-input" id="ops-state">
+              <option value="">Todos los estados</option>
+              <option value="confirmed">Confirmada</option>
+              <option value="processing">En proceso</option>
+              <option value="done">Concluida</option>
+            </select>
+            <select class="select-input" id="ops-pair">
+              <option value="">Todos los pares</option>
+              <option>BOB → PEN</option>
+              <option>PEN → BOB</option>
+              <option>BOB → USD</option>
+              <option>BOB → USDINT</option>
+            </select>
           </div>
           <div class="table-wrap card">
             <table>
               <thead>
-                <tr><th>Operación</th><th>Cliente</th><th>Par</th><th>Monto</th><th>Estado</th><th>WhatsApp</th><th></th></tr>
+                <tr><th>Operación</th><th>Cliente</th><th>Par</th><th>Monto</th><th>Estado</th><th>WhatsApp</th><th>Acciones</th></tr>
               </thead>
-              <tbody>
-                <tr class="row-clickable row-verified" data-goto="messages">
-                  <td><strong>OP/2026/00001</strong><br><small>Prueba real · 20/08</small></td>
-                  <td><div class="cell-user"><div class="avatar-xs">TC</div>Test Client</div></td>
-                  <td><span class="pair-badge">BOB → PEN</span></td>
-                  <td>1.000 → 550</td>
-                  <td><span class="status status-done">Concluida</span></td>
-                  <td><span class="status status-sent">Completo ✓</span></td>
-                  <td><button class="btn-icon">→</button></td>
-                </tr>
-                <tr class="row-clickable" data-goto="conversations">
-                  <td><strong>OP/2026/00124</strong><br><small>Hoy 10:02</small></td>
-                  <td><div class="cell-user"><div class="avatar-xs">ML</div>María López</div></td>
-                  <td><span class="pair-badge">BOB → PEN</span></td>
-                  <td>1.000 → 550</td>
-                  <td><span class="status status-processing">En proceso</span></td>
-                  <td><span class="status status-sent">Apertura ✓</span></td>
-                  <td><button class="btn-icon">→</button></td>
-                </tr>
-                <tr>
-                  <td><strong>OP/2026/00123</strong><br><small>Hoy 09:41</small></td>
-                  <td><div class="cell-user"><div class="avatar-xs">JR</div>Jorge Ríos</div></td>
-                  <td><span class="pair-badge">BOB → USD</span></td>
-                  <td>5.000 → 725</td>
-                  <td><span class="status status-confirmed">Confirmada</span></td>
-                  <td><span class="status status-sent">Apertura ✓</span></td>
-                  <td><button class="btn-icon">→</button></td>
-                </tr>
-                <tr>
-                  <td><strong>OP/2026/00121</strong><br><small>Hoy 07:30</small></td>
-                  <td><div class="cell-user"><div class="avatar-xs">CP</div>Carlos Paredes</div></td>
-                  <td><span class="pair-badge">PEN → BOB</span></td>
-                  <td>550 → 1.000</td>
-                  <td><span class="status status-done">Concluida</span></td>
-                  <td><span class="status status-sent">Completo ✓</span></td>
-                  <td><button class="btn-icon">→</button></td>
-                </tr>
-                <tr class="row-clickable" data-goto="conversations">
-                  <td><strong>OP/2026/00122</strong><br><small>Hoy 08:15</small></td>
-                  <td><div class="cell-user"><div class="avatar-xs">AC</div>Ana Castro</div></td>
-                  <td><span class="pair-badge">BOB → PEN</span></td>
-                  <td>1.000 → 550</td>
-                  <td><span class="status status-done">Concluida</span></td>
-                  <td><span class="status status-sent">Completo ✓</span></td>
-                  <td><button class="btn-icon">→</button></td>
-                </tr>
-              </tbody>
+              <tbody id="ops-tbody"></tbody>
             </table>
           </div>
         </section>
@@ -300,57 +265,8 @@
             </div>
           </div>
 
-          <div class="kanban">
-            <div class="kanban-col">
-              <div class="kanban-head"><span>Nuevos contactos</span><span class="count">2</span></div>
-              <article class="kanban-card">
-                <div class="kanban-card-top"><div class="avatar-xs">ML</div><div><strong>María López</strong><small>Hace 5 min</small></div></div>
-                <p>Plantilla apertura enviada. Sin respuesta aún.</p>
-                <div class="kanban-tags"><span class="tag">BOB→PEN</span></div>
-              </article>
-              <article class="kanban-card">
-                <div class="kanban-card-top"><div class="avatar-xs">JR</div><div><strong>Jorge Ríos</strong><small>Hace 18 min</small></div></div>
-                <p>Generaste una operación en nuestra web…</p>
-                <div class="kanban-tags"><span class="tag">BOB→USD</span></div>
-              </article>
-            </div>
-            <div class="kanban-col">
-              <div class="kanban-head"><span>Chats en progreso</span><span class="count">1</span></div>
-              <article class="kanban-card kanban-card-active">
-                <div class="kanban-card-top"><div class="avatar-xs">AC</div><div><strong>Ana Castro</strong><small>Hace 2 min</small></div></div>
-                <p>¿Cuándo llega el depósito a la cuenta destino?</p>
-                <div class="kanban-tags"><span class="tag tag--accent">24h abierta</span><span class="tag">Claude</span></div>
-              </article>
-            </div>
-            <div class="kanban-col">
-              <div class="kanban-head"><span>Pendiente respuesta</span><span class="count">1</span></div>
-              <article class="kanban-card">
-                <div class="kanban-card-top"><div class="avatar-xs">DP</div><div><strong>Diego Paz</strong><small>Hace 1 h</small></div></div>
-                <p>Preguntó por voucher. Ventana cerrada.</p>
-                <div class="kanban-tags"><span class="tag">Plantilla</span></div>
-              </article>
-            </div>
-            <div class="kanban-col">
-              <div class="kanban-head"><span>Finalizados</span><span class="count">1</span></div>
-              <article class="kanban-card">
-                <div class="kanban-card-top"><div class="avatar-xs">LS</div><div><strong>Lucía Sánchez</strong><small>Ayer</small></div></div>
-                <p>Tu orden ya fue concluida. Revisa tu correo…</p>
-                <div class="kanban-tags"><span class="tag tag--accent">Cierre enviado</span></div>
-              </article>
-            </div>
-          </div>
-
-          <div class="chat-preview card">
-            <div class="chat-preview-head">
-              <div class="cell-user"><div class="avatar-xs">AC</div><div><strong>Ana Castro</strong><small>+591 7000-0001 · OP/2026/00122</small></div></div>
-              <span class="tag tag--accent">Ventana 24h activa</span>
-            </div>
-            <div class="chat-window">
-              <div class="bubble out">Generaste una operación en nuestra web. Ya estamos trabajando en ella.<time>10:02 · Plantilla</time></div>
-              <div class="bubble in">¿Cuándo llega el depósito a la cuenta destino?<time>10:15 · Cliente</time></div>
-              <div class="bubble out bubble-ai">Hola Ana, tu operación OP/2026/00122 por 1.000 BOB → 550 PEN está en proceso. Te avisaremos en cuanto se confirme el depósito.<time>10:15 · Claude</time></div>
-            </div>
-          </div>
+          <div class="kanban" id="kanban-board"></div>
+          <div class="chat-preview card" id="chat-preview"></div>
         </section>
 
         <section class="page" id="page-messages">
@@ -360,13 +276,7 @@
           <div class="table-wrap card">
             <table>
               <thead><tr><th>Fecha</th><th>Cliente</th><th>Dirección</th><th>Origen</th><th>Mensaje</th><th>Estado</th></tr></thead>
-              <tbody>
-                <tr class="row-verified"><td>04:29</td><td>Test Client</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-template">Cierre</span></td><td class="msg-cell">Tu operación ha sido completada. Revisa tu correo para obtener el voucher.</td><td><span class="status status-sent">Enviado</span></td></tr>
-                <tr class="row-verified"><td>04:23</td><td>Test Client</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-template">Apertura</span></td><td class="msg-cell">Generaste una operación en nuestra web. Ya estamos trabajando en ella.</td><td><span class="status status-sent">Enviado</span></td></tr>
-                <tr><td>10:15</td><td>Ana Castro</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-claude">Claude</span></td><td class="msg-cell">Hola Ana, tu operación OP/2026/00122…</td><td><span class="status status-sent">Enviado</span></td></tr>
-                <tr><td>10:15</td><td>Ana Castro</td><td><span class="dir dir-in">Entrante</span></td><td><span class="origin origin-system">Cliente</span></td><td class="msg-cell">¿Cuándo llega el depósito…?</td><td><span class="status status-delivered">Entregado</span></td></tr>
-                <tr><td>10:02</td><td>María López</td><td><span class="dir dir-out">Saliente</span></td><td><span class="origin origin-template">Plantilla</span></td><td class="msg-cell">Generaste una operación en nuestra web…</td><td><span class="status status-sent">Enviado</span></td></tr>
-              </tbody>
+              <tbody id="msg-tbody"></tbody>
             </table>
           </div>
         </section>
@@ -374,22 +284,13 @@
         <section class="page" id="page-queue">
           <div class="page-header">
             <div><h1>Cola de envío</h1><p>Procesamiento async con reintentos automáticos.</p></div>
-            <button class="btn btn-secondary">Procesar cola ahora</button>
+            <button class="btn btn-secondary" id="btn-process-queue" type="button">Procesar cola ahora</button>
           </div>
-          <div class="queue-stats">
-            <div class="metric-card"><span>Completados</span><strong>847</strong></div>
-            <div class="metric-card"><span>Pendientes</span><strong>3</strong></div>
-            <div class="metric-card"><span>Procesando</span><strong>1</strong></div>
-            <div class="metric-card"><span>Fallidos</span><strong>0</strong></div>
-          </div>
+          <div class="queue-stats" id="queue-stats"></div>
           <div class="table-wrap card">
             <table>
               <thead><tr><th>Job</th><th>Cliente</th><th>Tipo</th><th>Estado</th><th>Reintentos</th></tr></thead>
-              <tbody>
-                <tr><td><strong>#1042</strong></td><td>María López</td><td>Plantilla apertura</td><td><span class="status status-done">Completado</span></td><td>0</td></tr>
-                <tr><td><strong>#1043</strong></td><td>Ana Castro</td><td>Respuesta Claude</td><td><span class="status status-processing">Procesando</span></td><td>0</td></tr>
-                <tr><td><strong>#1044</strong></td><td>Diego Paz</td><td>Plantilla cierre</td><td><span class="status status-confirmed">Pendiente</span></td><td>0</td></tr>
-              </tbody>
+              <tbody id="queue-tbody"></tbody>
             </table>
           </div>
         </section>
@@ -409,7 +310,7 @@
               <h3>Claude AI</h3>
               <div class="form-field"><label>API Key</label><input type="password" value="••••••••" disabled></div>
               <div class="form-field"><label>Modelo</label><input type="text" value="claude-3-5-haiku-20241022" readonly></div>
-              <div class="form-field toggle-field"><div><label>Modo mock</label><small>Pruebas sin credenciales</small></div><div class="toggle on"><span></span></div></div>
+              <div class="form-field toggle-field"><div><label>Modo mock</label><small>Auto-envía jobs de la cola</small></div><div class="toggle on" id="mock-toggle" role="button" tabindex="0"><span></span></div></div>
             </div>
             <div class="card settings-group">
               <h3>Operaciones Odoo</h3>
@@ -430,6 +331,49 @@
       </main>
     </div>
   </div>
+
+  <div class="modal-backdrop" id="op-modal" aria-hidden="true">
+    <div class="modal card" role="dialog" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <h2 id="modal-title">Nueva operación</h2>
+        <button type="button" class="btn-icon" id="modal-close" aria-label="Cerrar">×</button>
+      </div>
+      <form id="op-form">
+        <div class="form-field">
+          <label for="f-client">Cliente</label>
+          <input id="f-client" type="text" required placeholder="Ej. María López" value="Cliente Demo">
+        </div>
+        <div class="form-field">
+          <label for="f-phone">WhatsApp / móvil</label>
+          <input id="f-phone" type="text" placeholder="+59170000001" value="+59170000001">
+        </div>
+        <div class="form-field">
+          <label for="f-pair">Par</label>
+          <select id="f-pair" class="select-input" style="width:100%">
+            <option>BOB → PEN</option>
+            <option>PEN → BOB</option>
+            <option>BOB → USD</option>
+            <option>BOB → USDINT</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="f-from">Monto origen</label>
+            <input id="f-from" type="number" min="1" step="0.01" required value="1000">
+          </div>
+          <div class="form-field">
+            <label for="f-to">Monto destino</label>
+            <input id="f-to" type="number" min="1" step="0.01" required value="550">
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="modal-cancel">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Crear y notificar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>
