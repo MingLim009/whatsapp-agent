@@ -520,12 +520,12 @@ body {
   text-align: center;
   padding: 18px 12px;
   border-radius: var(--radius-sm);
-  background: var(--border-light);
+  background: #ffffff;
   border: 1px solid var(--border);
 }
 .arch-step--focus {
-  background: var(--blue-soft);
-  border-color: rgba(14, 165, 233, 0.25);
+  background: #ffffff;
+  border-color: rgba(14, 165, 233, 0.35);
 }
 .arch-icon {
   width: 40px;
